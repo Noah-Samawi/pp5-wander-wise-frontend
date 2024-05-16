@@ -91,8 +91,9 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img src={logo} className={styles.logo} alt="logo" height="55" />
           </Navbar.Brand>
+          <Navbar.Brand className= "text-secondary d-none d-lg-inline">Wander Wise</Navbar.Brand>
         </NavLink>
         {currentUser && addPostIcon}
         <Navbar.Toggle
@@ -103,14 +104,13 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             <NavLink
-              exact
               className={styles.NavLink}
               activeClassName={styles.Active}
+              exact
               to="/"
             >
               <i className="fas fa-home"></i>Home
             </NavLink>
-
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
