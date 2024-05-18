@@ -22,6 +22,7 @@ function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
+
   const [query, setQuery] = useState("");
 
   useEffect(() => {
