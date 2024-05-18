@@ -20,24 +20,21 @@ function App() {
       <Container className={styles.Main}>
         <Routes>
           <Route
-            exact
             path="/"
             element={<PostsPage message="No results found. Adjust the search keyword." />}
           />
           <Route
-            exact
             path="/feed"
             element={<PostsPage message="No results found. Adjust the search keyword or follow a user." filter={`owner__followed__owner__profile=${profile_id}&`} />}
           />
           <Route
-            exact
             path="/liked"
             element={<PostsPage message="No results found. Adjust the search keyword or like a post." filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`} />}
           />
-          <Route exact path="/signin" element={<SignInForm />} />
-          <Route exact path="/signup" element={<SignUpForm />} />
-          <Route exact path="/posts/create" element={<PostCreateForm />} />
-          <Route exact path="/posts/:id" element={<PostPage />} />
+          <Route path="/signin" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/posts/create" element={<PostCreateForm />} />
+          <Route path="/posts/:id" element={<PostPage />} />
           <Route path="*" element={<p>Page not found!</p>} />
         </Routes>
       </Container>

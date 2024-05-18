@@ -35,7 +35,7 @@ function SignInForm() {
       setCurrentUser(data.user);
       navigate("/"); // Use navigate function instead of history.push
     } catch (err) {
-      setErrors(err.response?.data);
+      setErrors(err.response?.data || {});
     }
   };
 
@@ -53,7 +53,7 @@ function SignInForm() {
           <h1 className={styles.Header}>sign in</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
+              <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Username"
@@ -63,14 +63,15 @@ function SignInForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+            {Array.isArray(errors.username) &&
+              errors.username.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
 
             <Form.Group controlId="password">
-              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -80,22 +81,12 @@ function SignInForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.password?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-              type="submit"
-            >
-              Sign in
-            </Button>
-            {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
+            {Array.isArray(errors.password) &&
+              errors.password.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
