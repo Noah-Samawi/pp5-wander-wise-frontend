@@ -63,7 +63,8 @@
     "webpack": "^5.64.4",
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
-    "workbox-webpack-plugin": "^6.4.1"
+    "workbox-webpack-plugin": "^6.4.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
   },
   "scripts": {
     "heroku-prebuild": "npm install -g serve",
@@ -91,10 +92,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "7.22.5",
-    "@babel/eslint-parser": "7.22.5",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@babel/preset-env": "7.22.5",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "msw": "^0.35.0"
   },
   "engines": {
