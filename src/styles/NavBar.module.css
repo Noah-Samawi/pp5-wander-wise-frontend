@@ -1,13 +1,30 @@
 .NavBar {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-  }
-  
-  .NavLink {
-    padding: 5px;
-  }
-  
-  .Active i {
-    color: #2142b2;
-  }
-  
+  background-color: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navBarScroll {
+  background-color: white;
+}
+
+.NavLink {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.NavLink i {
+  padding: 5px 10px;
+  font-size: 24px;
+}
+
+.Active {
+  color: var(--clr-accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.RotatedIcon {
+  transform: rotate(-45deg);
+}

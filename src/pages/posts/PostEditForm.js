@@ -11,10 +11,13 @@ import Image from "react-bootstrap/Image";
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import alertStyles from "../../styles/AlertMessages.module.css";
 
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
+// Form component for editing a post
 function PostEditForm() {
   const [errors, setErrors] = useState({});
 
@@ -30,11 +33,13 @@ function PostEditForm() {
   const { id } = useParams();
 
   useEffect(() => {
+    // Fetch the post data from the server
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
+        // Check if the current user is the owner of the post
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
         console.log(err);
@@ -74,7 +79,9 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
-      history.push(`/posts/${id}`);
+      history.push(`/posts/${id}`, {
+        message: "Your memory was successfully updated.",
+      });
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -86,7 +93,7 @@ function PostEditForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+        <Form.Label>Memory</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -94,14 +101,17 @@ function PostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+      {errors.title?.map((message, idx) => (
+        <Alert
+          variant="warning"
+          key={idx}
+          className={alertStyles["alert-warning-custom"]}
+        >
           {message}
         </Alert>
       ))}
-
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+        <Form.Label>Tell us about this moment...</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
@@ -110,8 +120,12 @@ function PostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+      {errors.content?.map((message, idx) => (
+        <Alert
+          variant="warning"
+          key={idx}
+          className={alertStyles["alert-warning-custom"]}
+        >
           {message}
         </Alert>
       ))}
@@ -130,8 +144,8 @@ function PostEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <Row className={styles.Row}>
+        <Col className="py-5 p-0 p-md-2" md={7} lg={8}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
@@ -141,10 +155,11 @@ function PostEditForm() {
               </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  className={`&{btnStyles.Button} &{btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
-                  Change the image
+                  {" "}
+                  Change the image{" "}
                 </Form.Label>
               </div>
 
@@ -155,12 +170,15 @@ function PostEditForm() {
                 ref={imageInput}
               />
             </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
+            {errors.image?.map((message, idx) => (
+              <Alert
+                variant="warning"
+                key={idx}
+                className={alertStyles["alert-warning-custom"]}
+              >
                 {message}
               </Alert>
             ))}
-
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>

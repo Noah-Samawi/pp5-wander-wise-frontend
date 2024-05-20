@@ -1,7 +1,9 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import styles from "../styles/MoreDropdown.module.css";
-import { useHistory } from "react-router";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import { useNavigate } from "react-router-dom";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -16,9 +18,43 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+export function WandererEditDropdown({ id }) {
+  const navigate = useNavigate();
+
+  // Render dropdown menu for editing wanderer details
   return (
-    <Dropdown className="ml-auto" drop="left">
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+      <Dropdown.Toggle as={ThreeDots} />
+      <Dropdown.Menu>
+        <Dropdown.Item
+          onClick={() => navigate(`/wanderers/${id}/edit`)}
+          aria-label="edit-wanderer"
+        >
+          <i className="fas fa-edit" /> edit wanderer
+        </Dropdown.Item>
+        <Dropdown.Item
+          onClick={() => navigate(`/wanderers/${id}/edit/username`)}
+          aria-label="edit-username"
+        >
+          <i className="far fa-id-card" />
+          change username
+        </Dropdown.Item>
+        <Dropdown.Item
+          onClick={() => navigate(`/wanderers/${id}/edit/password`)}
+          aria-label="edit-password"
+        >
+          <i className="fas fa-key" />
+          change password
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+}
+
+export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+  // Render more options dropdown menu
+  return (
+    <Dropdown className={`ml-auto ${styles.Dots}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -30,45 +66,19 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i className="fas fa-edit" />
+          <i className="fa-solid fa-pen-to-square"></i>
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >
-          <i className="fas fa-trash-alt" />
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-};
-
-export const ProfileEditDropdown = ({ id }) => {
-  const history = useHistory();
-  return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
-      <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu>
-        <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit`)}
-          aria-label="edit-profile"
-        >
-          <i className="fas fa-edit" /> edit profile
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit/username`)}
-          aria-label="edit-username"
-        >
-          <i className="far fa-id-card" />
-          change username
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit/password`)}
-          aria-label="edit-password"
-        >
-          <i className="fas fa-key" />
-          change password
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>Are you sure you want to delete?!</Tooltip>}
+          >
+            <i className="fas fa-trash-alt" />
+          </OverlayTrigger>
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

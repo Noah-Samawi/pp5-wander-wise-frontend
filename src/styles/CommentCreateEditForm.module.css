@@ -1,22 +1,40 @@
-
 .Form {
-    border: none;
-    border-bottom: 2px #00d1ff solid;
-  }
-  
-  .Button {
-    border: none;
-    background-color: #242a3d;
-    color: aliceblue;
-    border-radius: 100px;
-    padding: 4px 10px;
-    min-width: 75px;
-    margin: 5px;
-  }
-  
-  .Button:hover {
-    cursor: pointer;
-    background-color: aliceblue;
-    color: #242a3d;
-  }
-  
+  border: none;
+  border-bottom: 2px var(--clr-accent-pink) solid;
+}
+
+.Button {
+  border: none;
+  background-color: var(--clr-accent-dark);
+  color: #ffffff;
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 20px;
+}
+
+.Button:hover {
+  cursor: pointer;
+  background-color: var(--clr-accent-light);
+  color: var(--clr-primary-light);
+}
+
+.Bright {
+  border: none;
+  background-color: var(--clr-primary-light);
+  color: var(--clr-accent-dark);
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 20px;
+}
+
+.Bright:hover {
+  border: none;
+  background-color: var(--clr-accent-danger);
+  color: var(--clr-primary-light);
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 20px;
+}

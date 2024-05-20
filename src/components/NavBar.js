@@ -1,8 +1,10 @@
-import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from "../assets/logo.png";
-import styles from "../styles/NavBar.module.css";
+import React, { useRef } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import logo from "../assets/logo.webp";
 import { NavLink } from "react-router-dom";
+import styles from "../styles/NavBar.module.css";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -12,11 +14,15 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
 
+// The navigation bar component for the application
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const searchRef = useRef(null);
 
-  const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  const { expanded, setExpanded, ref } = useClickOutsideToggle({
+    ignoreRefs: [searchRef],
+  });
 
   const handleSignOut = async () => {
     try {
@@ -28,57 +34,61 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+  // Icon for adding a memory
+  const addMemoryIcon = (
     <NavLink
+      to="/posts/create"
       className={styles.NavLink}
       activeClassName={styles.Active}
-      to="/posts/create"
     >
-      <i className="far fa-plus-square"></i>Add post
+      <i className="fa-solid fa-circle-plus"></i>Memory
     </NavLink>
   );
+
+  // Icons shown when user is logged in
   const loggedInIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
         to="/feed"
-      >
-        <i className="fas fa-stream"></i>Feed
-      </NavLink>
-      <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/liked"
       >
-        <i className="fas fa-heart"></i>Liked
-      </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+        <i className={`fa-solid fa-shoe-prints ${styles.RotatedIcon}`}></i>
+        Following
       </NavLink>
       <NavLink
+        to="/bucketlist"
         className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
+        activeClassName={styles.Active}
       >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <i className="fa-solid fa-bucket"></i>Bucketlist
+      </NavLink>
+      <NavLink to="/" onClick={handleSignOut} className={styles.NavLink}>
+        <i className="fa-solid fa-door-closed"></i>Logout
+      </NavLink>
+      <NavLink className={styles.NavLink} to={`/twanderers/${currentUser?.pk}`}>
+        <Avatar src={currentUser?.wanderer_image} height={40} alt="wanderer" />
+        {currentUser?.username}
       </NavLink>
     </>
   );
+
+  // Icons shown when user is logged out
   const loggedOutIcons = (
     <>
       <NavLink
+        to="/login"
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/signin"
       >
-        <i className="fas fa-sign-in-alt"></i>Sign in
+        <i className="fa-solid fa-door-open me-1"></i>Login
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fas fa-user-plus"></i>Sign up
+        <i className="fa-solid fa-user-plus me-1"></i>Sign up
       </NavLink>
     </>
   );
@@ -86,33 +96,50 @@ const NavBar = () => {
   return (
     <Navbar
       expanded={expanded}
-      className={styles.NavBar}
-      expand="md"
+      expand="lg"
       fixed="top"
+      className={styles.NavBar}
     >
-      <Container>
-        <NavLink to="/">
+      <Container fluid>
+        <NavLink to="/" className={styles.NavLink}>
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img
+              src={logo}
+              width="auto"
+              height="60"
+              className="d-inline-block align-top"
+              alt="Travel Tickr logo"
+            />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addPostIcon}
+        {currentUser && addMemoryIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
-          aria-controls="basic-navbar-nav"
+          aria-controls="navbarScroll"
         />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className={`ms-auto my-2 my-lg-0 ${styles.navBarScroll} justify-content-end`}
+            style={{ maxHeight: "250px" }}
+            navbarScroll
+          >
             <NavLink
               exact
+              to="/"
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/"
             >
-              <i className="fas fa-home"></i>Home
+              <i className="fa-solid fa-house me-2"></i>Home
             </NavLink>
-
+            <NavLink
+              exact
+              to="/about"
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              <i className="fa-solid fa-circle-info"></i>About
+            </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>

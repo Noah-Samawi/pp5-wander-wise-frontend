@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom"; // Updated import
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 export const CurrentUserContext = createContext();
@@ -10,10 +10,12 @@ export const SetCurrentUserContext = createContext();
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
+// Provider component for managing the current user state
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate(); // Updated hook
 
+  // Fetch the current user data on component mount
   const handleMount = async () => {
     try {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
@@ -28,6 +30,7 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
+    // Intercept requests to check for token expiration and refresh if necessary
     axiosReq.interceptors.request.use(
       async (config) => {
         if (shouldRefreshToken()) {
@@ -36,7 +39,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                history.push("/signin");
+                navigate("/signin"); // Updated navigation
               }
               return null;
             });
@@ -51,6 +54,7 @@ export const CurrentUserProvider = ({ children }) => {
       }
     );
 
+    // Intercept responses to check for token expiration and refresh if necessary
     axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
@@ -60,7 +64,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                history.push("/signin");
+                navigate("/login"); // Updated navigation
               }
               return null;
             });
@@ -71,7 +75,7 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
-  }, [history]);
+  }, [navigate]); // Updated dependency
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

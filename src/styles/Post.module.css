@@ -1,24 +1,41 @@
 .Post {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .Post figure,
-  h5 {
-    margin: 0 0;
-  }
-  
-  .Heart {
-    color: #f85032;
-  }
-  
-  .Heart:hover {
-    color: #2142b2;
-  }
-  
-  .HeartOutline:hover {
-    color: #f85032;
-  }
+  background-color: white;
+  border: 1px solid #dadadf;
+  border-radius: 0.375rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Post figure,
+h5 {
+  margin: 0 0;
+}
+
+.TitleText {
+  color: var(--clr-accent-dark);
+  font-family: "Lato", sans-serif;
+}
+
+.Heart {
+  color: var(--clr-accent-pink);
+}
+
+.Heart:hover {
+  color: var(--clr-accent-dark);
+}
+
+.HeartOutline:hover {
+  color: var(--clr-accent-pink);
+}
+
+.smallText {
+  font-size: small;
+  color: var(--clr-accent-dark);
+}
+
+.PostBar {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 20px;
+}

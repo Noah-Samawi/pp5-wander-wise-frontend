@@ -1,7 +1,8 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import styles from "../styles/Asset.module.css";
 
+// Asset component renders an image or spinner with an optional message
 const Asset = ({ spinner, src, message }) => {
   return (
     <div className={`${styles.Asset} p-4`}>

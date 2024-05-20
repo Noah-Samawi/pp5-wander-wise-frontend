@@ -1,3 +1,16 @@
+.Row {
+  display: flex;
+  align-items: center;
+}
+
 .Container {
-    min-height: 343px;
-  }
+  min-height: 343px;
+}
+
+.FormControl:focus {
+  color: #0a3057;
+  background-color: #fff;
+  border-color: #fe8695;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(253, 13, 221, 0.25);
+}

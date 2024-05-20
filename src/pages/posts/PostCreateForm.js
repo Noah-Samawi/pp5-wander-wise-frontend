@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,32 +8,51 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import Asset from "../../components/Asset";
-
 import Upload from "../../assets/upload.png";
+import Asset from "../../components/Asset";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import alertStyles from "../../styles/AlertMessages.module.css";
 
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
-function PostCreateForm() {
+function PostCreateForm({ userId }) {
   useRedirect("loggedOut");
-  const [errors, setErrors] = useState({});
 
+  // State and ref initialization
+  const [errors, setErrors] = useState({});
   const [postData, setPostData] = useState({
     title: "",
     content: "",
     image: "",
+    location: "",
+    country: "",
   });
-  const { title, content, image } = postData;
-
+  const { title, content, image, location, country } = postData;
+  const [countries, setCountries] = useState([]);
   const imageInput = useRef(null);
   const history = useHistory();
 
+  useEffect(() => {
+    // Fetch list of countries from Restcountries API
+    const fetchCountries = async () => {
+      try {
+        const response = await axiosReq.get(
+          "https://restcountries.com/v3.1/all"
+        );
+        setCountries(response.data);
+      } catch (err) {
+        console.log("Error fetching countries:", err);
+      }
+    };
+    fetchCountries();
+  }, []);
+
+  // Event handlers
   const handleChange = (event) => {
     setPostData({
       ...postData,
@@ -58,10 +77,14 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
+    formData.append("location", location);
+    formData.append("country", country);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
+      history.push(`/posts/${data.id}`, {
+        message: "Your memory was successfully posted.",
+      });
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -70,10 +93,11 @@ function PostCreateForm() {
     }
   };
 
+  // Text fields JSX
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+        <Form.Label>Memory</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -81,14 +105,17 @@ function PostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+      {errors.title?.map((message, idx) => (
+        <Alert
+          variant="warning"
+          key={idx}
+          className={alertStyles["alert-warning-custom"]}
+        >
           {message}
         </Alert>
       ))}
-
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+        <Form.Label>A few words about this moment...</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
@@ -97,12 +124,39 @@ function PostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+      {errors.content?.map((message, idx) => (
+        <Alert
+          variant="warning"
+          key={idx}
+          className={alertStyles["alert-warning-custom"]}
+        >
           {message}
         </Alert>
       ))}
-
+      <Form.Group>
+        <Form.Label>Location name:</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Country</Form.Label>
+        <Form.Control
+          as="select"
+          name="country"
+          value={country}
+          onChange={handleChange}
+        >
+          {countries.map((country) => (
+            <option key={country.cca2} value={country.name.common}>
+              {country.name.common}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -117,8 +171,8 @@ function PostCreateForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <Row className={styles.Row}>
+        <Col className="py-5 p-0 p-md-2" md={7} lg={8}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
@@ -130,10 +184,11 @@ function PostCreateForm() {
                   </figure>
                   <div>
                     <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      className={`&{btnStyles.Button} &{btnStyles.Blue} btn`}
                       htmlFor="image-upload"
                     >
-                      Change the image
+                      {" "}
+                      Change the image{" "}
                     </Form.Label>
                   </div>
                 </>
@@ -144,7 +199,7 @@ function PostCreateForm() {
                 >
                   <Asset
                     src={Upload}
-                    message="Click or tap to upload an image"
+                    message={"Click or tap to upload an image"}
                   />
                 </Form.Label>
               )}
@@ -156,12 +211,15 @@ function PostCreateForm() {
                 ref={imageInput}
               />
             </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
+            {errors.image?.map((message, idx) => (
+              <Alert
+                variant="warning"
+                key={idx}
+                className={alertStyles["alert-warning-custom"]}
+              >
                 {message}
               </Alert>
             ))}
-
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>

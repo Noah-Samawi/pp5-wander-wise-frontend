@@ -1,0 +1,16 @@
+.alert-warning-custom {
+  background-color: var(--clr-accent-pink);
+  color: var(--clr-primary-light);
+  border: 1px solid var(--clr-accent-pink);
+  padding: 8px;
+  margin-top: 2px;
+}
+
+.alert-success-custom {
+  background-color: var(--clr-accent-dark);
+  color: var(--clr-primary-light);
+  font-weight: 500;
+  border: 1px solid var(--clr-accent-dark);
+  padding: 8px;
+  margin-top: 2px;
+}
