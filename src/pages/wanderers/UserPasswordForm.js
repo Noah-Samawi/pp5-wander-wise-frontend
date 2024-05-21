@@ -12,7 +12,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
-import styles from "../../styles/Page.module.css";
+import styles from "../../styles/WandererPage.module.css";
 
 const UserPasswordForm = () => {
   const navigate = useNavigate();

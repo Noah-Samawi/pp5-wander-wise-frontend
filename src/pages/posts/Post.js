@@ -1,6 +1,7 @@
+// src/pages/posts/Post.js
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
+import { Link, useNavigate } from "react-router-dom";  // Correct import
 import styles from "../../styles/Post.module.css";
 import counterStyles from "../../styles/Counter.module.css";
 
@@ -8,15 +9,11 @@ import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-
-import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Post = (props) => {
-  // Props destructuring
   const {
     id,
     owner,
@@ -38,20 +35,18 @@ const Post = (props) => {
     country,
   } = props;
 
-  // Custom hooks
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  // Event handlers
   const handleEdit = () => {
-    history.push(`/posts/${id}/edit`);
+    navigate(`/posts/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
-      history.push(`/`, { message: 'Your memory was successfully deleted.' });
+      navigate(`/`, { message: 'Your memory was successfully deleted.' });
     } catch (err) {
       console.log(err);
     }
@@ -187,10 +182,10 @@ const Post = (props) => {
               overlay={<Tooltip>Love it!</Tooltip>}
             >
               <div>
-            <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
-            </span>
-            </div>
+                <span onClick={handleLike}>
+                  <i className={`far fa-heart ${styles.HeartOutline}`} />
+                </span>
+              </div>
             </OverlayTrigger>
           ) : (
             <OverlayTrigger

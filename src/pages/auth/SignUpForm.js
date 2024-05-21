@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -29,7 +29,7 @@ const SignUpForm = () => {
 
   const [errors, setErrors] = useState({});
 
-  const history = useHistory();
+  //const history = useNavigate();
 
   // Event handler to handle change
   const handleChange = (event) => {

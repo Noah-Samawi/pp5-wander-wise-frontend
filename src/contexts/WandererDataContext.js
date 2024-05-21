@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
@@ -68,7 +68,7 @@ export const WandererDataProvider = ({ children }) => {
 
   useEffect(() => {
     // Fetch popular wanderers data on component mount or when the current user changes
-    const handleMount = async () => {
+    const fetchPopularWanderers = async () => {
       try {
         const { data } = await axiosReq.get(
           "/wanderers/?ordering=-followers_count"
@@ -82,7 +82,7 @@ export const WandererDataProvider = ({ children }) => {
       }
     };
 
-    handleMount();
+    fetchPopularWanderers();
   }, [currentUser]);
 
   return (

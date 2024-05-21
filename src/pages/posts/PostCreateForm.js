@@ -16,7 +16,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import alertStyles from "../../styles/AlertMessages.module.css";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
@@ -35,7 +35,7 @@ function PostCreateForm({ userId }) {
   const { title, content, image, location, country } = postData;
   const [countries, setCountries] = useState([]);
   const imageInput = useRef(null);
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     // Fetch list of countries from Restcountries API

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -8,21 +9,17 @@ import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
-import { Link } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import alertStyles from "../../styles/AlertMessages.module.css";
 
 import axios from "axios";
-import { useHistory } from "react-router-dom/";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
 function LogInForm() {
-  // Hooks and state initialization
   const SetCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 
@@ -32,10 +29,9 @@ function LogInForm() {
   });
 
   const { username, password } = logInData;
-  const history = useHistory();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
-  // Event handler to handle change
   const handleChange = (event) => {
     setLogInData({
       ...logInData,
@@ -43,14 +39,13 @@ function LogInForm() {
     });
   };
 
-  // Event handler to handle submit
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", logInData);
       SetCurrentUser(data.user);
       setTokenTimestamp(data);
-      history.goBack();
+      navigate(-1);  // Go back to the previous page
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -112,7 +107,6 @@ function LogInForm() {
                 className={alertStyles["alert-warning-custom"]}
                 key={idx}
               >
-                submi
                 {message}
               </Alert>
             ))}

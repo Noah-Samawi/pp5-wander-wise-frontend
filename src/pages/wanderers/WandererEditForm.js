@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,7 +22,7 @@ const WandererEditForm = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const imageFile = useRef();
 
   const [wandererData, setWandererData] = useState({

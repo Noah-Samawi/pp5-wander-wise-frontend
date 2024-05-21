@@ -12,7 +12,7 @@ import styles from "../../styles/WandererPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useSetWandererData,
