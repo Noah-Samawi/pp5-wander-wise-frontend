@@ -1,7 +1,8 @@
+import React from "react";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
@@ -25,15 +26,13 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
-        <Router> {/* Use Router instead of BrowserRouter */}
-          <Routes> {/* Use Routes */}
+        <Router>
+          <Routes>
             <Route
-              exact
               path="/"
               element={<PostsPage message="No results found. Adjust the search keyword." />}
             />
             <Route
-              exact
               path="/feed"
               element={<PostsPage
                 message="No results found. Adjust the search keyword or follow a user."
