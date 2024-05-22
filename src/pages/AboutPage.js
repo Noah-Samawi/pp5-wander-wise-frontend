@@ -21,10 +21,10 @@ const AboutPage = () => {
       <Col md={6} className={`my-auto d-md-block p-2`}>
         <div className={styles.Info}>
           <h1>About</h1>
-          <p>Welcome to the Travel Tickr About page!</p>
+          <p>Welcome to the Wander Wise About page!</p>
           <p>
-            Travel Tickr is a web application that allows users to share their
-            travel experiences, discover new destinations, and connect with
+          Wander Wise is a web application that allows users to share their
+            wander experiences, discover new destinations, and connect with
             other wanderers.
           </p>
           <p>
