@@ -39,7 +39,7 @@ export const WandererDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -62,7 +62,7 @@ export const WandererDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -78,7 +78,7 @@ export const WandererDataProvider = ({ children }) => {
           popularWanderers: data,
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

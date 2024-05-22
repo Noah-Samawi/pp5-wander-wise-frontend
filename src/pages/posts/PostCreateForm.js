@@ -46,7 +46,7 @@ function PostCreateForm({ userId }) {
         );
         setCountries(response.data);
       } catch (err) {
-        console.log("Error fetching countries:", err);
+        // console.log("Error fetching countries:", err);
       }
     };
     fetchCountries();
@@ -86,7 +86,7 @@ function PostCreateForm({ userId }) {
         message: "Your memory was successfully posted.",
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

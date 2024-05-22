@@ -55,7 +55,7 @@ function CommentCreateForm(props) {
       setContent("");
       setSuccessMessage("Your comment was successfully posted.");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

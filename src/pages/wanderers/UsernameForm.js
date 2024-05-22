@@ -50,7 +50,7 @@ const UsernameForm = () => {
       }));
       navigate(-1); // Go back to previous page after successfully updating
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

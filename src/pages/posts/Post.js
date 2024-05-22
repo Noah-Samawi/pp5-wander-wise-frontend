@@ -48,7 +48,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       navigate(`/`, { message: 'Your memory was successfully deleted.' });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -64,7 +64,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -84,7 +84,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -100,7 +100,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -120,7 +120,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

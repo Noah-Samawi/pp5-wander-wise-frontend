@@ -51,7 +51,7 @@ function WandererPage() {
         setWandererPosts(wandererPosts);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();

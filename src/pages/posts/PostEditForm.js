@@ -40,7 +40,7 @@ function PostEditForm() {
         // Check if the current user is the owner of the post
         is_owner ? setPostData({ title, content, image }) : navigate("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -81,7 +81,7 @@ function PostEditForm() {
         message: "Your memory was successfully updated.",
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
