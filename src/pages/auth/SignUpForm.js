@@ -25,11 +25,8 @@ const SignUpForm = () => {
     password1: "",
     password2: "",
   });
-  const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
-
-  //const history = useNavigate();
+  const { username, password1, password2 } = signUpData;
 
   // Event handler to handle change
   const handleChange = (event) => {
@@ -44,7 +41,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/login");
+      // Redirect after successful signup if necessary
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -74,11 +71,11 @@ const SignUpForm = () => {
                 type="text"
                 placeholder="Username"
                 name="username"
-                I
                 value={username}
                 onChange={handleChange}
               />
             </Form.Group>
+            {/* Display username errors */}
             {errors.username?.map((message, idx) => (
               <Alert
                 variant="warning"
@@ -100,6 +97,7 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {/* Display password1 errors */}
             {errors.password1?.map((message, idx) => (
               <Alert
                 variant="warning"
@@ -121,6 +119,7 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {/* Display password2 errors */}
             {errors.password2?.map((message, idx) => (
               <Alert
                 variant="warning"
@@ -131,12 +130,14 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
+            {/* Submit button */}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Blue}`}
               type="submit"
             >
               Sign up!
             </Button>
+            {/* Display non-field errors */}
             {errors.non_field_errors?.map((message, idx) => (
               <Alert
                 variant="warning"
@@ -148,6 +149,7 @@ const SignUpForm = () => {
             ))}
           </Form>
         </Container>
+        {/* Link to login page */}
         <Container className={`mt-3 ${styles.Content}`}>
           <Link className={styles.Link} to="/login">
             Already have an account? <span>Sign in</span>
