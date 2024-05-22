@@ -15,7 +15,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
 import axios from "axios";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useRedirect } from "../../hooks/useRedirect"; // Import useRedirect hook
 
 const SignUpForm = () => {
   // Hooks and state initialization

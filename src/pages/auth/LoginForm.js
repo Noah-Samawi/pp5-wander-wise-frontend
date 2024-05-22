@@ -76,7 +76,7 @@ function LogInForm() {
                 type="text"
                 placeholder="Enter username"
                 name="username"
-                value={username}
+                value={username || ""}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -97,7 +97,7 @@ function LogInForm() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={password}
+                value={password || ""}
                 onChange={handleChange}
               />
             </Form.Group>
