@@ -35,7 +35,7 @@ function PostCreateForm({ userId }) {
   const { title, content, image, location, country } = postData;
   const [countries, setCountries] = useState([]);
   const imageInput = useRef(null);
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch list of countries from Restcountries API
@@ -82,9 +82,12 @@ function PostCreateForm({ userId }) {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`, {
-        message: "Your memory was successfully posted.",
-      });
+      try {
+        
+        navigate(`/posts/${data.id}`);
+      } catch (err) {
+        console.log(err);
+      }
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {
@@ -92,6 +95,8 @@ function PostCreateForm({ userId }) {
       }
     }
   };
+
+  console.log('title', title);
 
   // Text fields JSX
   const textFields = (
@@ -159,7 +164,7 @@ function PostCreateForm({ userId }) {
       </Form.Group>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
+        onClick={() => navigate(-1)}
       >
         cancel
       </Button>

@@ -15,6 +15,7 @@ export const useRedirect = (userAuthStatus) => {
           navigate("/");
         }
       } catch (err) {
+        console.error("Failed to refresh token:", err);
         // if user is not logged in, the code below will run
         if (userAuthStatus === "loggedOut") {
           navigate("/");

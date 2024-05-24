@@ -1,7 +1,6 @@
-// src/pages/posts/Post.js
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useNavigate } from "react-router-dom";  // Correct import
+import { Link, useNavigate } from "react-router-dom"; 
 import styles from "../../styles/Post.module.css";
 import counterStyles from "../../styles/Counter.module.css";
 
@@ -48,7 +47,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       navigate(`/`, { message: 'Your memory was successfully deleted.' });
     } catch (err) {
-      // console.log(err);
+      console.error("Error deleting post:", err);
     }
   };
 
@@ -57,14 +56,12 @@ const Post = (props) => {
       const { data } = await axiosReq.post("/likes/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
-            : post;
-        }),
+        results: prevPosts.results.map((post) => 
+          post.id === id ? { ...post, likes_count: post.likes_count + 1, like_id: data.id } : post
+        ),
       }));
     } catch (err) {
-      // console.log(err);
+      console.error("Error liking post:", err);
     }
   };
 
@@ -73,18 +70,14 @@ const Post = (props) => {
       const { data } = await axiosReq.post("/bucketlist/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? {
-                ...post,
-                bucketlists_count: post.bucketlists_count + 1,
-                bucketlist_id: data.id,
-              }
-            : post;
-        }),
+        results: prevPosts.results.map((post) => 
+          post.id === id 
+            ? { ...post, bucketlists_count: post.bucketlists_count + 1, bucketlist_id: data.id } 
+            : post
+        ),
       }));
     } catch (err) {
-      // console.log(err);
+      console.error("Error adding to bucketlist:", err);
     }
   };
 
@@ -93,14 +86,12 @@ const Post = (props) => {
       await axiosReq.delete(`/likes/${like_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
-            : post;
-        }),
+        results: prevPosts.results.map((post) => 
+          post.id === id ? { ...post, likes_count: post.likes_count - 1, like_id: null } : post
+        ),
       }));
     } catch (err) {
-      // console.log(err);
+      console.error("Error unliking post:", err);
     }
   };
 
@@ -109,18 +100,14 @@ const Post = (props) => {
       await axiosReq.delete(`/bucketlist/${bucketlist_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? {
-                ...post,
-                bucketlists_count: post.bucketlists_count - 1,
-                bucketlist_id: null,
-              }
-            : post;
-        }),
+        results: prevPosts.results.map((post) => 
+          post.id === id 
+            ? { ...post, bucketlists_count: post.bucketlists_count - 1, bucketlist_id: null } 
+            : post
+        ),
       }));
     } catch (err) {
-      // console.log(err);
+      console.error("Error removing from bucketlist:", err);
     }
   };
 
