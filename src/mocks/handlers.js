@@ -7,13 +7,13 @@ export const handlers = [
   rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
     return res(
       ctx.json({
-        "id": 2,
+        "id": 3,
         "owner": "noah",
         "created_at": "22 May 2024",
         "updated_at": "22 May 2024",
         "name": "",
         "content": "",
-        "image": "https://res.cloudinary.com/djebesftb/image/upload/v1/media/../default_profile_uwgpte",
+        "image": "https://res.cloudinary.com/djebesftb/image/upload/v1/media/../default_profile_vm4gvx",
 
       })
     );

@@ -60,7 +60,7 @@ function LogInForm() {
         <Image
           className={`${appStyles.FillerImage}`}
           src={
-            "https://collection.cloudinary.com/djebesftb/7c932fb14b1ee1119b51eab588c921bd"
+            "https://res.cloudinary.com/djebesftb/image/upload/v1716196098/signupform_knv8sg.jpg"
           }
         />
       </Col>

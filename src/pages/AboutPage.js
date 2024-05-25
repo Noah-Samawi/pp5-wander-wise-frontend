@@ -14,7 +14,7 @@ const AboutPage = () => {
         <Image
           className={`${appStyles.FillerImage}`}
           src={
-            "https://collection.cloudinary.com/djebesftb/e172fd3d4b978f36d64350680a6db69c"
+            "https://res.cloudinary.com/djebesftb/image/upload/v1716196098/signupform_knv8sg.jpg"
           }
         />
       </Col>

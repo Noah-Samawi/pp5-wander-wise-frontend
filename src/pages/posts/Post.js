@@ -21,8 +21,8 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
-    bucketlists_count,
-    bucketlist_id,
+    countrysides_count,
+    countryside_id,
     title,
     content,
     truncated,
@@ -65,19 +65,19 @@ const Post = (props) => {
     }
   };
 
-  const handleBucketlist = async () => {
+  const handleCountryside = async () => {
     try {
-      const { data } = await axiosReq.post("/bucketlist/", { post: id });
+      const { data } = await axiosReq.post("/countryside/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => 
           post.id === id 
-            ? { ...post, bucketlists_count: post.bucketlists_count + 1, bucketlist_id: data.id } 
+            ? { ...post, countrysides_count: post.countrysides_count + 1, countryside_id: data.id } 
             : post
         ),
       }));
     } catch (err) {
-      console.error("Error adding to bucketlist:", err);
+      console.error("Error adding to countryside:", err);
     }
   };
 
@@ -95,19 +95,19 @@ const Post = (props) => {
     }
   };
 
-  const handleRemoveFromBucketlist = async () => {
+  const handleRemoveFromCountryside = async () => {
     try {
-      await axiosReq.delete(`/bucketlist/${bucketlist_id}/`);
+      await axiosReq.delete(`/countryside/${countryside_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => 
           post.id === id 
-            ? { ...post, bucketlists_count: post.bucketlists_count - 1, bucketlist_id: null } 
+            ? { ...post, countrysides_count: post.countrysides_count - 1, countryside_id: null } 
             : post
         ),
       }));
     } catch (err) {
-      console.error("Error removing from bucketlist:", err);
+      console.error("Error removing from countryside:", err);
     }
   };
 
@@ -192,13 +192,13 @@ const Post = (props) => {
           </Link>
           </OverlayTrigger>
           <span className={counterStyles.counter}>{comments_count}</span>
-          {bucketlist_id ? (
+          {countryside_id ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Remove from bucketlist!</Tooltip>}
+              overlay={<Tooltip>Remove from countryside!</Tooltip>}
             >
               <div>
-                <span onClick={handleRemoveFromBucketlist}>
+                <span onClick={handleRemoveFromCountryside}>
                   <i className={`fa-solid fa-bucket ${styles.Heart}`} />
                 </span>
               </div>
@@ -206,16 +206,16 @@ const Post = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Add to bucketlist!</Tooltip>}
+              overlay={<Tooltip>Add to countryside!</Tooltip>}
             >
               <div>
-                <span onClick={handleBucketlist}>
+                <span onClick={handleCountryside}>
                   <i className={`fa-solid fa-bucket ${styles.HeartOutline}`} />
                 </span>
               </div>
             </OverlayTrigger>
           )}
-          <span className={counterStyles.counter}>{bucketlists_count}</span>
+          <span className={counterStyles.counter}>{countrysides_count}</span>
         </div>
         <hr />
         <div className="d-flex align-items-center justify-content-end">

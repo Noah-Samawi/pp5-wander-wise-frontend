@@ -57,11 +57,11 @@ const NavBar = () => {
         Following
       </NavLink>
       <NavLink
-        to="/bucketlist"
+        to="/countryside"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fa-solid fa-bucket"></i>Bucketlist
+        <i className="fa-solid fa-bucket"></i>Countryside
       </NavLink>
       <NavLink to="/" onClick={handleSignOut} className={styles.NavLink}>
         <i className="fa-solid fa-door-closed"></i>Logout
@@ -102,14 +102,15 @@ const NavBar = () => {
     >
       <Container fluid>
         <NavLink to="/" className={styles.NavLink}>
-          <Navbar.Brand>
+          <Navbar.Brand className="text-secondary d-none d-lg-inline">
             <img
               src={logo}
               width="auto"
-              height="60"
+              height="65"
               className="d-inline-block align-top"
-              alt="Travel Tickr logo"
+              alt="Wander Wise logo"
             />
+            <span className="brand-text">Wander Wise</span>
           </Navbar.Brand>
         </NavLink>
         {currentUser && addMemoryIcon}
