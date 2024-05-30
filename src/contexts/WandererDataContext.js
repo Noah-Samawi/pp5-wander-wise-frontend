@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
@@ -31,6 +31,7 @@ export const WandererDataProvider = ({ children }) => {
             followHelper(wanderer, clickedWanderer, data.id)
           ),
         },
+
         popularWanderers: {
           ...prevState.popularWanderers,
           results: prevState.popularWanderers.results.map((wanderer) =>
@@ -39,11 +40,11 @@ export const WandererDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
-  // Handle unfollow action for a clicked wanderer
+  // Handle unfollow actionf or clicked wanderer
   const handleUnFollow = async (clickedWanderer) => {
     try {
       await axiosRes.delete(`/followers/${clickedWanderer.following_id}`);
@@ -62,13 +63,13 @@ export const WandererDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
   useEffect(() => {
     // Fetch popular wanderers data on component mount or when the current user changes
-    const fetchPopularWanderers = async () => {
+    const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
           "/wanderers/?ordering=-followers_count"
@@ -78,11 +79,11 @@ export const WandererDataProvider = ({ children }) => {
           popularWanderers: data,
         }));
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
     };
 
-    fetchPopularWanderers();
+    handleMount();
   }, [currentUser]);
 
   return (

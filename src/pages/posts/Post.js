@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useNavigate } from "react-router-dom"; 
+
 import styles from "../../styles/Post.module.css";
 import counterStyles from "../../styles/Counter.module.css";
 
@@ -8,11 +8,14 @@ import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Post = (props) => {
+  // Props destructuring
   const {
     id,
     owner,
@@ -34,10 +37,12 @@ const Post = (props) => {
     country,
   } = props;
 
+  // Custom hooks
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const navigate = useNavigate();
 
+  // Event handlers
   const handleEdit = () => {
     navigate(`/posts/${id}/edit`);
   };
@@ -47,7 +52,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       navigate(`/`, { message: 'Your memory was successfully deleted.' });
     } catch (err) {
-      console.error("Error deleting post:", err);
+      console.log(err);
     }
   };
 
@@ -56,12 +61,14 @@ const Post = (props) => {
       const { data } = await axiosReq.post("/likes/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => 
-          post.id === id ? { ...post, likes_count: post.likes_count + 1, like_id: data.id } : post
-        ),
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            : post;
+        }),
       }));
     } catch (err) {
-      console.error("Error liking post:", err);
+      console.log(err);
     }
   };
 
@@ -70,14 +77,18 @@ const Post = (props) => {
       const { data } = await axiosReq.post("/countryside/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => 
-          post.id === id 
-            ? { ...post, countrysides_count: post.countrysides_count + 1, countryside_id: data.id } 
-            : post
-        ),
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? {
+                ...post,
+                countrysides_count: post.countrysides_count + 1,
+                countryside_id: data.id,
+              }
+            : post;
+        }),
       }));
     } catch (err) {
-      console.error("Error adding to countryside:", err);
+      console.log(err);
     }
   };
 
@@ -86,12 +97,14 @@ const Post = (props) => {
       await axiosReq.delete(`/likes/${like_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => 
-          post.id === id ? { ...post, likes_count: post.likes_count - 1, like_id: null } : post
-        ),
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            : post;
+        }),
       }));
     } catch (err) {
-      console.error("Error unliking post:", err);
+      console.log(err);
     }
   };
 
@@ -100,14 +113,18 @@ const Post = (props) => {
       await axiosReq.delete(`/countryside/${countryside_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => 
-          post.id === id 
-            ? { ...post, countrysides_count: post.countrysides_count - 1, countryside_id: null } 
-            : post
-        ),
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? {
+                ...post,
+                countrysides_count: post.countrysides_count - 1,
+                countryside_id: null,
+              }
+            : post;
+        }),
       }));
     } catch (err) {
-      console.error("Error removing from countryside:", err);
+      console.log(err);
     }
   };
 
@@ -169,10 +186,10 @@ const Post = (props) => {
               overlay={<Tooltip>Love it!</Tooltip>}
             >
               <div>
-                <span onClick={handleLike}>
-                  <i className={`far fa-heart ${styles.HeartOutline}`} />
-                </span>
-              </div>
+            <span onClick={handleLike}>
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
+            </span>
+            </div>
             </OverlayTrigger>
           ) : (
             <OverlayTrigger

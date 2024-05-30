@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -8,6 +7,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+
+import { Link } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -18,8 +19,11 @@ import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
+import { useNavigate } from 'react-router-dom';
+
 
 function LogInForm() {
+  // Hooks and state initialization
   const SetCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 
@@ -32,6 +36,7 @@ function LogInForm() {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
+  // Event handler to handle change
   const handleChange = (event) => {
     setLogInData({
       ...logInData,
@@ -39,6 +44,7 @@ function LogInForm() {
     });
   };
 
+  // Event handler to handle submit
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -76,7 +82,7 @@ function LogInForm() {
                 type="text"
                 placeholder="Enter username"
                 name="username"
-                value={username || ""}
+                value={username}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -97,7 +103,7 @@ function LogInForm() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={password || ""}
+                value={password}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -107,6 +113,7 @@ function LogInForm() {
                 className={alertStyles["alert-warning-custom"]}
                 key={idx}
               >
+                submi
                 {message}
               </Alert>
             ))}
