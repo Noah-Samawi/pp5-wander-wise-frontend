@@ -50,10 +50,10 @@ Developer: [Noah Al Samawi](https://github.com/Noah-Samawi) <br>
   * [Commit and Issue Linking](#commit-and-issue-linking)
   * [Bug Tracking](#bug-tracking)
   * [Iterative Development Approach](#iterative-development-approach)
-    + [Sprint 1 (June 13th - June 18th, 2023):](#sprint-1--june-13th---june-18th--2023--)
-    + [Sprint 2 (June 19th - June 24th, 2023):](#sprint-2--june-19th---june-24th--2023--)
-    + [Sprint 3 (June 25th - July 1st, 2023):](#sprint-3--june-25th---july-1st--2023--)
-    + [Sprint 4 (July 2nd - July 7th, 2023):](#sprint-4--july-2nd---july-7th--2023--)
+    + [Sprint 1 (April 13th - April 18th, Mai):](#sprint-1--April-13th---April-18th--2024--)
+    + [Sprint 2 (April 19th - April 24th, 2024):](#sprint-2--April-19th---April-24th--2024--)
+    + [Sprint 3 (April 25th - Mai 1st, 2024):](#sprint-3--April-25th---Mai-1st--2024--)
+    + [Sprint 4 (Mai 2nd - Mai 7th, 2024):](#sprint-4--Mai-2nd---Mai-7th--2024--)
     + [Backlog](#backlog)
   * [Backlog and Subsequent Iterations](#backlog-and-subsequent-iterations)
 - [Bugs](#bugs) 
@@ -404,7 +404,7 @@ To ensure efficient prioritization, the project employs the MuSCoW (Must have, S
 
 Within each sprint, a MoSCoW method is used to further prioritize user stories. They are classified as Must Do, Should Do, Could Do, and Won't Do, representing the remaining user stories that will not be included in the sprints. This approach ensures a clear differentiation between the overall project prioritization and the prioritization within each sprint, minimizing any potential confusion.
 
-#### Sprint 1 (June 13th - June 18th, 2023): 
+#### Sprint 1 (April 13th - April 18th, 2024): 
 **Planning & Documentation**
 * [x] Plan Sprint (Must do)
 * [x] Create and write readme.md (Must do)
@@ -442,7 +442,7 @@ Within each sprint, a MoSCoW method is used to further prioritize user stories. 
 **Sprint 1 recap:**
 In sprint 1 I accomplished critical planning and documentation tasks, and successfully created the backend of the project including the creation of numerous apps and models. The initiation of the frontend was also embarked upon, though several elements have been postponed to the subsequent sprint.
 
-#### Sprint 2 (June 19th - June 24th, 2023):
+#### Sprint 2 (April 19th - April 24th, 2024):
 * [ ] Location (Must do)  *- Moved to next sprint and user story created*
 * [x] Test deploy project on Heroku (Must do) 
 * [x] Install component library (Must do) 
@@ -471,7 +471,7 @@ In sprint 1 I accomplished critical planning and documentation tasks, and succes
 **Sprint 2 recap:**
 During sprint 2 the focus was on the further development of the frontend, with significant progress made on the implementation of the navigation bar and authorization. Additionally, several crucial user stories pertaining to user registration, login, logout, and post creation and viewing were completed, while a few tasks and user stories have been transitioned to the next sprint.
 
-#### Sprint 3 (June 25th - July 1st, 2023): 
+#### Sprint 3 (April 25th - Mai 1st, 2024): 
 * [ ] [USER STORY: About page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/10) (Must do) *- Moved to next sprint*
 * [x] [USER STORY: Profile page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/19) (Must do)
 * [x] [USER STORY: Update profile](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/5) (Must do)
@@ -503,7 +503,7 @@ During sprint 2 the focus was on the further development of the frontend, with s
 
 **Sprint 3 recap:** Although I have decided to move the "Location" user story to the next sprint, we have successfully accomplished a significant portion of the planned tasks for Sprint 3. 
 
-#### Sprint 4 (July 2nd - July 7th, 2023): 
+#### Sprint 4 (Mai 2nd - Mai 7th, 2024): 
 * [x] [USER STORY: About page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/10) (Must do) 
 * [x] [USER STORY: Like comments](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/13) (Must do)
 * [ ] [USER STORY: Upload multiple photos](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/28) (Should do) *- Moved to backlog*
@@ -592,6 +592,11 @@ All images used in the webapp is from [Pexels](https://www.pexels.com/sv-se/) Th
 
 ### Fonts
 [Google Fonts](https://fonts.google.com/)
+
+
+### Amiresponsive
+[Ami Responsive](https://ui.dev/amiresponsive)
+
 
 ### Other
 [API to fetch countries](https://restcountries.com/)
