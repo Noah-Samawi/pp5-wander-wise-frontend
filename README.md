@@ -5,7 +5,7 @@ Wander Wise is your ultimate destination for all things wander. Whether you're a
 Join Wander Wise today and embark on a journey of discovery, connection, and endless wander inspiration.
 
 ![Mockup image](/docs/mockup.png) <br>
-Developer: [Sandra Bergström](https://github.com/Noah-Samawi) <br>
+Developer: [Noah Al Samawi](https://github.com/Noah-Samawi) <br>
 [Live webapp](https://pp5-wander-wise-frontend-63919ac97d38.herokuapp.com/) <br>
 [Repository](https://github.com/Noah-Samawi/pp5-wander-wise-frontend.git) <br>
 [APi](https://pp5-apis-e3b849e62ff3.herokuapp.com/) <br>
@@ -532,7 +532,7 @@ The user stories are tracked on the project board, and the "To do" column repres
 
 Please note that even though the project timeline has been accelerated, the iterative development approach allows for ongoing improvements and enhancements to meet the evolving needs of users.
 
-For a comprehensive view of the project progress, user stories, and bug tracking, please see the [Kanban board](https://github.com/users/SandraBergstrom/projects/7).
+For a comprehensive view of the project progress, user stories, and bug tracking, please see the [Kanban board](https://github.com/users/Noah-Samawi/projects/13).
 
 [Back up](#table-of-content)
 
