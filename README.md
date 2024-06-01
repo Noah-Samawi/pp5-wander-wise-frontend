@@ -1,3 +1,5 @@
+# ![Logo](/docs/wander.jpg)
+
 Wander Wise is your ultimate destination for all things wander. Whether you're a globetrotter, an avid explorer, or simply seeking inspiration for your next adventure, Wander Wise has got you covered. Share your wander tales, from exhilarating hikes to serene beach getaways, by uploading stunning photos accompanied by captivating stories. Connect with fellow wanderers, exchange tips and recommendations, and create meaningful connections with people who share your passion for exploration. With Wander Wise, your wander memories are beautifully organized, easily accessible, and ready to be shared with friends, family, and the global wander community. 
 
 Join Wander Wise today and embark on a journey of discovery, connection, and endless wander inspiration.
