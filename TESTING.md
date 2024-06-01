@@ -31,7 +31,7 @@ The html passed through the validation and the code was pasted in and I used a f
 
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|index| No errors | <details><summary>Screenshot of result</summary>![Result](/docs/testing/html.png)</details>| :white_check_mark:
+|index| No errors | <details><summary>Screenshot of result</summary>![Result](/docs/testing/html-filter.png)</details>| :white_check_mark:
 
 [Back to the top](#table-of-content)
 
