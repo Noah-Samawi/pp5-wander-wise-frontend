@@ -5,7 +5,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { useNavigate } from "react-router-dom";
 
-
 /// The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
@@ -20,7 +19,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 ));
 
 export function WandererEditDropdown({ id }) {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   // Render dropdown menu for editing wanderer details
   return (
@@ -28,20 +27,20 @@ export function WandererEditDropdown({ id }) {
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu>
         <Dropdown.Item
-          onClick={() => history.push(`/wanderers/${id}/edit`)}
+          onClick={() => navigate(`/wanderers/${id}/edit`)}
           aria-label="edit-wanderer"
         >
           <i className="fas fa-edit" /> edit wanderer
         </Dropdown.Item>
         <Dropdown.Item
-          onClick={() => history.push(`/wanderers/${id}/edit/username`)}
+          onClick={() => navigate(`/wanderers/${id}/edit/username`)}
           aria-label="edit-username"
         >
           <i className="far fa-id-card" />
           change username
         </Dropdown.Item>
         <Dropdown.Item
-          onClick={() => history.push(`/wanderers/${id}/edit/password`)}
+          onClick={() => navigate(`/wanderers/${id}/edit/password`)}
           aria-label="edit-password"
         >
           <i className="fas fa-key" />
