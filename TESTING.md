@@ -192,14 +192,10 @@ npm test
 The current status of the tests is as follows:
 
 ```bash
- PASS  src/components/__tests__/NavBar.test.js
- PASS  src/pages/auth/__tests__/LoginForm.test.js
- PASS  src/App.test.js
-
-Test Suites: 3 passed, 3 total
-Tests:       5 passed, 5 total
+ Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 4 passed, 5 total
 Snapshots:   0 total
-Time:        5.63 s
+Time:        4.687 s
 Ran all test suites.
 ```
 
