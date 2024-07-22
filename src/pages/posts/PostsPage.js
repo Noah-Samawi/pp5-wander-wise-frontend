@@ -37,7 +37,7 @@ function PostsPage({ message, filter = "" }) {
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
     };
     // Delay fetching posts after a query change to improve user experience

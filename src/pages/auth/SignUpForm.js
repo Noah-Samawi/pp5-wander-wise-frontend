@@ -29,7 +29,7 @@ const SignUpForm = () => {
 
   const [errors, setErrors] = useState({});
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Correct usage of useNavigate
 
   // Event handler to handle change
   const handleChange = (event) => {
@@ -44,7 +44,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      navigate("/login");
+      navigate("/login"); // Navigate to login page after successful sign-up
     } catch (err) {
       setErrors(err.response?.data);
     }

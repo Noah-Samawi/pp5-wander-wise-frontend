@@ -30,7 +30,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -102,11 +102,11 @@ const NavBar = () => {
     >
       <Container fluid>
         <NavLink to="/" className={styles.NavLink}>
-          <Navbar.Brand className="text-secondary d-none d-lg-inline">
+          <Navbar.Brand>
             <img
               src={logo}
               width="auto"
-              height="65"
+              height="60"
               className="d-inline-block align-top"
               alt="Wander Wise logo"
             />

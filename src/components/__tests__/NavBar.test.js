@@ -48,9 +48,9 @@ test("renders link and avatar in navbar to the logged in user", async () => {
   const followingLink = screen.getByRole("link", { name: "Following" });
   expect(followingLink).toBeInTheDocument();
 
-  // Check to see if bucketlist link is rendered to the logged in user
-  const bucketlistLink = screen.getByRole("link", { name: "Bucketlist" });
-  expect(bucketlistLink).toBeInTheDocument();
+  // Check to see if countryside link is rendered to the logged in user
+  const countrysideLink = screen.getByRole("link", { name: "Countryside" });
+  expect(countrysideLink).toBeInTheDocument();
 });
 
 test("renders Sign in and Sign up buttons again on log out", async () => {

@@ -22,7 +22,7 @@ const WandererEditForm = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const imageFile = useRef();
 
   const [wandererData, setWandererData] = useState({
@@ -54,16 +54,17 @@ const WandererEditForm = () => {
             one_important_thing,
           });
         } catch (err) {
-          // console.log(err);
-          history.push("/");
+          console.log(err);
+          navigate('/');
         }
       } else {
-        history.push("/");
+        console.log('IN ELSE BLOCK')
+        navigate('/');
       }
     };
 
     handleMount();
-  }, [currentUser, history, id]);
+  }, [currentUser, navigate, id]);
 
   // Event handlers
   const handleChange = (event) => {
@@ -91,9 +92,9 @@ const WandererEditForm = () => {
         ...currentUser,
         wanderer_image: data.image,
       }));
-      history.goBack();
+      navigate.goBack();
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -139,7 +140,7 @@ const WandererEditForm = () => {
       </Form.Group>
       <Button
         className={`mt-3 me-1 ${btnStyles.Button} ${btnStyles.Bright}`}
-        onClick={() => history.goBack()}
+        onClick={() => navigate.goBack()}
       >
         cancel
       </Button>

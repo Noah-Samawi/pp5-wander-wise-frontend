@@ -46,7 +46,7 @@ function PostCreateForm({ userId }) {
         );
         setCountries(response.data);
       } catch (err) {
-        // console.log("Error fetching countries:", err);
+        console.log("Error fetching countries:", err);
       }
     };
     fetchCountries();
@@ -82,21 +82,16 @@ function PostCreateForm({ userId }) {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      try {
-        
-        navigate(`/posts/${data.id}`);
-      } catch (err) {
-        console.log(err);
-      }
+      navigate.push(`/posts/${data.id}`, {
+        message: "Your memory was successfully posted.",
+      });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
   };
-
-  console.log('title', title);
 
   // Text fields JSX
   const textFields = (
@@ -164,7 +159,7 @@ function PostCreateForm({ userId }) {
       </Form.Group>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate.goBack()}
       >
         cancel
       </Button>

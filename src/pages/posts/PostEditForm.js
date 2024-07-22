@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -38,7 +39,7 @@ function PostEditForm() {
         const { title, content, image, is_owner } = data;
 
         // Check if the current user is the owner of the post
-        is_owner ? setPostData({ title, content, image }) : navigate("/");
+        is_owner ? setPostData({ title, content, image }) : navigate.push("/");
       } catch (err) {
         // console.log(err);
       }
