@@ -14,7 +14,6 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
 
-// The navigation bar component for the application
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -34,32 +33,29 @@ const NavBar = () => {
     }
   };
 
-  // Icon for adding a memory
+  const getNavLinkClass = ({ isActive }) => (isActive ? `${styles.NavLink} ${styles.Active}` : styles.NavLink);
+
   const addMemoryIcon = (
     <NavLink
       to="/posts/create"
-      className={styles.NavLink}
-      activeClassName={styles.Active}
+      className={getNavLinkClass}
     >
       <i className="fa-solid fa-circle-plus"></i>Memory
     </NavLink>
   );
 
-  // Icons shown when user is logged in
   const loggedInIcons = (
     <>
       <NavLink
         to="/feed"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={getNavLinkClass}
       >
         <i className={`fa-solid fa-shoe-prints ${styles.RotatedIcon}`}></i>
         Following
       </NavLink>
       <NavLink
         to="/countryside"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={getNavLinkClass}
       >
         <i className="fa-solid fa-bucket"></i>Countryside
       </NavLink>
@@ -73,20 +69,17 @@ const NavBar = () => {
     </>
   );
 
-  // Icons shown when user is logged out
   const loggedOutIcons = (
     <>
       <NavLink
         to="/login"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={getNavLinkClass}
       >
         <i className="fa-solid fa-door-open me-1"></i>Login
       </NavLink>
       <NavLink
         to="/signup"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={getNavLinkClass}
       >
         <i className="fa-solid fa-user-plus me-1"></i>Sign up
       </NavLink>
@@ -126,18 +119,14 @@ const NavBar = () => {
             navbarScroll
           >
             <NavLink
-              exact
               to="/"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={getNavLinkClass}
             >
               <i className="fa-solid fa-house me-2"></i>Home
             </NavLink>
             <NavLink
-              exact
               to="/about"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={getNavLinkClass}
             >
               <i className="fa-solid fa-circle-info"></i>About
             </NavLink>
