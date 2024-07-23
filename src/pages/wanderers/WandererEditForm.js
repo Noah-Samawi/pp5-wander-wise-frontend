@@ -92,7 +92,7 @@ const WandererEditForm = () => {
         ...currentUser,
         wanderer_image: data.image,
       }));
-      navigate.goBack();
+      navigate(`/wanderers/${id}/`);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
