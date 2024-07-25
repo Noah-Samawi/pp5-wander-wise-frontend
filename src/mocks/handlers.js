@@ -25,6 +25,11 @@ export const handlers = [
 
   // Mock POST request for refreshing the authentication token
   rest.post(`${baseURL}dj-rest-auth/token/refresh/`, (req, res, ctx) => {
-    return res(ctx.status(200));
+    return res(
+      ctx.json({
+        access: "fake-access-token",
+        refresh: "fake-refresh-token"
+      })
+    );
   }),
 ];
