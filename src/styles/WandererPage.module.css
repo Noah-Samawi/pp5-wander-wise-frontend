@@ -6,7 +6,7 @@
   color: var(--clr-accent-dark);
 }
 
-.TravelerImage {
+.WandererImage {
   object-fit: cover;
   height: 120px;
   width: 120px;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 991px) {
-  .TravelerImage {
+  .WandererImage {
     width: 250px;
     height: 250px;
   }

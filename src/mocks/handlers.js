@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+import { rest } from "msw";
 
 const baseURL = "https://pp5-apis-e3b849e62ff3.herokuapp.com/";
 
@@ -25,11 +25,6 @@ export const handlers = [
 
   // Mock POST request for refreshing the authentication token
   rest.post(`${baseURL}dj-rest-auth/token/refresh/`, (req, res, ctx) => {
-    return res(
-      ctx.json({
-        access: "fake-access-token",
-        refresh: "fake-refresh-token"
-      })
-    );
+    return res(ctx.status(200));
   }),
 ];

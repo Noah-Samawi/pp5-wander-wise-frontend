@@ -50,6 +50,8 @@ The html passed through the validation and the code was pasted in and I used a f
 |Following/Countryside| No errors|[Result](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-wander-wise-frontend-63919ac97d38.herokuapp.com%2Fcountryside&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| :white_check_mark:
 |Wanderer Profile| No errors|[Result](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-wander-wise-frontend-63919ac97d38.herokuapp.com%2Fwanderers%2F3&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| :white_check_mark:
 |Edit wanderer| No errors|[Result](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-wander-wise-frontend-63919ac97d38.herokuapp.com%2Fwanderers%2F7&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| :white_check_mark:
+|Edit username| No errors|[Result]()| :white_check_mark:
+|Edit password| No errors|[Result]()| :white_check_mark:
 
 Although the validator returned some error messages, these are due to external libraries and frameworks that are known to be reliable and widely used. The custom code written for this project has been thoroughly checked and does not contain any important errors or issues.
 
@@ -76,18 +78,17 @@ src/components/NotFound.js
 --- | --- | --- | :---:
 |Eslint during development|No errors|See below|:white_check_mark:
 
-Throughout the development of Wander Wise, ESLint has been instrumental in identifying and resolving problematic code patterns. The codebase has been kept clean and adheres to the recommended JavaScript best practices. However, as shown in the terminal output below, there are currently some test failures that need to be addressed:
+Throughout the development of Wander Wise, ESLint has been instrumental in identifying and resolving problematic code patterns. The codebase has been kept clean and adheres to the recommended JavaScript best practices, as shown in the terminal output below:
 
 ```bash
-Test Suites: 3 failed, 3 total
-Tests:       0 total
-Snapshots:   0 total
-Time:        1.933 s
-Ran all test suites.
+Compiled successfully!
 
-Watch Usage: Press w to show more.
+You can now view wander wise in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.0.5.2:3000
+webpack compiled successfully
   ```
-
 #### Running **'npx eslint'**
 When running npx eslint in the terminal, the linting check is performed on the entire codebase, including files that may not be currently open or actively being edited. This enables the detection of linting errors that may not have been captured by the "regular" ESLint setup during development.
 

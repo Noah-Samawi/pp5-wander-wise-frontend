@@ -13,8 +13,9 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import alertStyles from "../../styles/AlertMessages.module.css";
 
-import { useNavigate, useParams } from "react-router-dom"; // Correct import
+import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 // Form component for editing a post
 function PostEditForm() {
@@ -28,7 +29,7 @@ function PostEditForm() {
   const { title, content, image } = postData;
 
   const imageInput = useRef(null);
-  const navigate = useNavigate();
+  const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,14 +40,14 @@ function PostEditForm() {
         const { title, content, image, is_owner } = data;
 
         // Check if the current user is the owner of the post
-        is_owner ? setPostData({ title, content, image }) : navigate.push("/");
+        is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
     };
 
     handleMount();
-  }, [navigate, id]);
+  }, [history, id]);
 
   const handleChange = (event) => {
     setPostData({
@@ -78,11 +79,11 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
-      navigate(`/posts/${id}`, {
+      history.push(`/posts/${id}`, {
         message: "Your memory was successfully updated.",
       });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -131,7 +132,7 @@ function PostEditForm() {
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => navigate.goBack()}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>

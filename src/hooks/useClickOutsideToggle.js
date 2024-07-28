@@ -26,7 +26,7 @@ const useClickOutsideToggle = ({ ignoreRefs = [] } = {}) => {
     return () => {
       document.removeEventListener("mouseup", handleClickOutside);
     };
-  }, [ignoreRefs]);
+  }, [ref, ignoreRefs]);
 
   return { expanded, setExpanded, ref };
 };

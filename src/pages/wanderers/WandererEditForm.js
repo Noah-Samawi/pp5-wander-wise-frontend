@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,7 +22,7 @@ const WandererEditForm = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
-  const navigate = useNavigate();
+  const history = useHistory();
   const imageFile = useRef();
 
   const [wandererData, setWandererData] = useState({
@@ -55,16 +55,15 @@ const WandererEditForm = () => {
           });
         } catch (err) {
           console.log(err);
-          navigate('/');
+          history.push("/");
         }
       } else {
-        console.log('IN ELSE BLOCK')
-        navigate('/');
+        history.push("/");
       }
     };
 
     handleMount();
-  }, [currentUser, navigate, id]);
+  }, [currentUser, history, id]);
 
   // Event handlers
   const handleChange = (event) => {
@@ -92,7 +91,7 @@ const WandererEditForm = () => {
         ...currentUser,
         wanderer_image: data.image,
       }));
-      navigate(`/wanderers/${id}/`);
+      history.goBack();
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -140,7 +139,7 @@ const WandererEditForm = () => {
       </Form.Group>
       <Button
         className={`mt-3 me-1 ${btnStyles.Button} ${btnStyles.Bright}`}
-        onClick={() => navigate.goBack()}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>

@@ -9,10 +9,11 @@ import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Post = (props) => {
   // Props destructuring
@@ -40,17 +41,17 @@ const Post = (props) => {
   // Custom hooks
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const navigate = useNavigate();
+  const history = useHistory();
 
   // Event handlers
   const handleEdit = () => {
-    navigate(`/posts/${id}/edit`);
+    history.push(`/posts/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
-      navigate(`/`, { message: 'Your memory was successfully deleted.' });
+      history.push(`/`, { message: 'Your memory was successfully deleted.' });
     } catch (err) {
       console.log(err);
     }

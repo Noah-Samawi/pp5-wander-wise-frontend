@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -15,7 +15,7 @@ import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/WandererPage.module.css";
 
 const UserPasswordForm = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();
 
@@ -37,19 +37,19 @@ const UserPasswordForm = () => {
 
   useEffect(() => {
     if (currentUser?.wanderer_id?.toString() !== id) {
-      // redirect user if they are not the owner of this wanderer's profile
-      navigate("/");
+      // redirect user if they are not the owner of this wanderers profile
+      history.push("/");
     }
-  }, [currentUser, navigate, id]);
+  }, [currentUser, history, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Send request to change the user's password
+      // Send request to change the users password
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
-      navigate(-1); // Go back to previous page after successful change
+      history.goBack(); // Go back to previous page after successfull change
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -91,7 +91,7 @@ const UserPasswordForm = () => {
             ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Bright}`}
-              onClick={() => navigate(-1)}
+              onClick={() => history.goBack()}
             >
               cancel
             </Button>

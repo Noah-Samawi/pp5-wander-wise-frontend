@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { useNavigate } from "react-router-dom"; // Updated import
+import { useHistory } from "react-router";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 export const CurrentUserContext = createContext();
@@ -13,7 +13,7 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 // Provider component for managing the current user state
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate(); // Updated hook
+  const history = useHistory();
 
   // Fetch the current user data on component mount
   const handleMount = async () => {
@@ -21,7 +21,7 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -39,7 +39,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                navigate("/signin"); // Updated navigation
+                history.push("/signin");
               }
               return null;
             });
@@ -64,7 +64,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                navigate("/login"); // Updated navigation
+                history.push("/login");
               }
               return null;
             });
@@ -75,7 +75,7 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
-  }, [navigate]); // Updated dependency
+  }, [history]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
@@ -21,7 +21,7 @@ const UsernameForm = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
-  const navigate = useNavigate();
+  const history = useHistory();
   const { id } = useParams();
 
   const currentUser = useCurrentUser();
@@ -32,9 +32,9 @@ const UsernameForm = () => {
     if (currentUser?.wanderer_id?.toString() === id) {
       setUsername(currentUser.username);
     } else {
-      navigate("/");
+      history.push("/");
     }
-  }, [currentUser, navigate, id]);
+  }, [currentUser, history, id]);
 
   // Event handlers
   const handleSubmit = async (event) => {
@@ -48,9 +48,9 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
-      navigate(-1); // Go back to previous page after successfully updating
+      history.goBack(); // Go back to previous page after successfully updating
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -76,7 +76,7 @@ const UsernameForm = () => {
             ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Bright}`}
-              onClick={() => navigate(-1)}
+              onClick={() => history.goBack()}
             >
               cancel
             </Button>

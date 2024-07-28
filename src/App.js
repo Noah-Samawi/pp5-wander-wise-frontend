@@ -1,7 +1,7 @@
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
@@ -10,7 +10,7 @@ import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
-import WandererPage from "./pages/wanderers/WandererPage"; // Correct casing
+import WandererPage from "./pages/wanderers/WandererPage";
 import UsernameForm from "./pages/wanderers/UsernameForm";
 import UserPasswordForm from "./pages/wanderers/UserPasswordForm";
 import WandererEditForm from "./pages/wanderers/WandererEditForm";
@@ -25,44 +25,62 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
-        <Routes>
+        <Switch>
           <Route
+            exact
             path="/"
-            element={<PostsPage message="No results found. Adjust the search keyword." />}
+            render={() => (
+              <PostsPage message="No results found. Adjust the search keyword." />
+            )}
           />
           <Route
+            exact
             path="/feed"
-            element={
+            render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or follow a user."
                 filter={`owner__followed__owner__wanderer=${wanderer_id}&`}
               />
-            }
+            )}
           />
           <Route
+            exact
             path="/countryside"
-            element={
+            render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or add a post to your countryside."
                 filter={`countryside__owner__wanderer=${wanderer_id}&ordering=-countryside__created_at&`}
               />
-            }
+            )}
           />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route exact path="/login" render={() => <LoginForm />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/about" render={() => <AboutPage />} />
           <Route
+            exact
             path="/posts/create"
-            element={currentUser ? <PostCreateForm userId={currentUser.id} /> : <LoginForm />}
+            render={() => <PostCreateForm userId={wanderer_id} />}
           />
-          <Route path="/posts/:id/edit" element={<PostEditForm />} />
-          <Route path="/posts/:id" element={<PostPage />} />
-          <Route path="/wanderers/:id" element={<WandererPage />} />
-          <Route path="/wanderers/:id/edit/username" element={<UsernameForm />} />
-          <Route path="/wanderers/:id/edit/password" element={<UserPasswordForm />} />
-          <Route path="/wanderers/:id/edit" element={<WandererEditForm />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route exact path="/wanderers/:id" render={() => <WandererPage />} />
+          <Route
+            exact
+            path="/wanderers/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/wanderers/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/wanderers/:id/edit"
+            render={() => <WandererEditForm />}
+          />
+          <Route render={() => <NotFound />} />
+        </Switch>
       </Container>
     </div>
   );

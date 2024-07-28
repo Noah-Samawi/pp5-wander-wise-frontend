@@ -16,7 +16,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import alertStyles from "../../styles/AlertMessages.module.css";
 
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
@@ -35,7 +35,7 @@ function PostCreateForm({ userId }) {
   const { title, content, image, location, country } = postData;
   const [countries, setCountries] = useState([]);
   const imageInput = useRef(null);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     // Fetch list of countries from Restcountries API
@@ -82,7 +82,7 @@ function PostCreateForm({ userId }) {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      navigate.push(`/posts/${data.id}`, {
+      history.push(`/posts/${data.id}`, {
         message: "Your memory was successfully posted.",
       });
     } catch (err) {
@@ -159,7 +159,7 @@ function PostCreateForm({ userId }) {
       </Form.Group>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => navigate.goBack()}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>

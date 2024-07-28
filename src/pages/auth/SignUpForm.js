@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -29,7 +29,7 @@ const SignUpForm = () => {
 
   const [errors, setErrors] = useState({});
 
-  const navigate = useNavigate(); // Correct usage of useNavigate
+  const history = useHistory();
 
   // Event handler to handle change
   const handleChange = (event) => {
@@ -44,7 +44,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      navigate("/login"); // Navigate to login page after successful sign-up
+      history.push("/login");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -74,6 +74,7 @@ const SignUpForm = () => {
                 type="text"
                 placeholder="Username"
                 name="username"
+                I
                 value={username}
                 onChange={handleChange}
               />
