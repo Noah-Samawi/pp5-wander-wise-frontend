@@ -190,14 +190,15 @@ To run the test suite, use the below command in the terminal:
 npm test
 ```
 
-The current status of the tests is as follows:
+Throughout the development of Wander Wise, ESLint has been instrumental in identifying and resolving problematic code patterns. The codebase has been kept clean and adheres to the recommended JavaScript best practices, as shown in the terminal output below:
 
 ```bash
- Test Suites: 1 failed, 2 passed, 3 total
-Tests:       1 failed, 4 passed, 5 total
-Snapshots:   0 total
-Time:        4.687 s
-Ran all test suites.
+Compiled successfully!
+
+You can now view Wander Wise in the browser.
+
+Local:            http://localhost:3000
+On Your Network:  http://10.0.5.2:3000
 ```
 
 [Back to the top](#table-of-content)
