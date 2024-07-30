@@ -314,7 +314,7 @@ One particular feature where React has been instrumental is the implementation o
 #### Wireframes
 The wireframes provide a visual representation of the different pages and features of the web application. They serve as a blueprint for the design and layout of each page, helping to visualize the user interface and overall user experience. These wireframes were created using Balsamiq, a tool that enables quick and intuitive sketching of design ideas.
 
-<details><summary>Home / Following / Bucketlist</summary>
+<details><summary>Home / Following / Countryside</summary>
 <img src="/docs/wireframes/home.png">
 </details>
 <details><summary>About</summary>
@@ -550,8 +550,7 @@ For a comprehensive view of the project progress, user stories, and bug tracking
 Here is a summary of the identified bugs along with brief descriptions of their fixes. For more detailed information, please follow the provided link to the corresponding GitHub issue, where you can track the entire process including the bug report, commits, and the steps taken to resolve the issue.
 | **Bug** | **Fix** |
 | ----------- | ----------- |
-|[Npm teast , a error message](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/35)|sont fixed jet|
-|[Can't see the user profile](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues)||
+|[Npm teast , a error message](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/35)|Run "nvm install 16"|
 
 [Back up](#table-of-content)
 
