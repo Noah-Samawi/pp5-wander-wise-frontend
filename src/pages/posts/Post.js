@@ -224,7 +224,7 @@ const Post = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Add to countryside!</Tooltip>}
+              overlay={<Tooltip> login to be able to add a post to the countryside!</Tooltip>}
             >
               <div>
                 <span onClick={handleCountryside}>
