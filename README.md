@@ -434,7 +434,7 @@ Within each sprint, a MoSCoW method is used to further prioritize user stories. 
 **Frontend**
 * [x] Create a repository for the Wander Tickr (Should do)
 * [x] Start a React project in Gitpod (Could do)
-* [ ] Test deploy project on Heroku (Could do) *- Moved to next sprint*
+* [x] Test deploy project on Heroku (Could do) *- Moved to next sprint*
 * [ ] Install component library (Could do) *- Moved to next sprint*
 * [ ] Design and implement navigation bar (Could do) *- Moved to next sprint*
 * [ ] Do so navigation bar and authorization works (Could do) *- Moved to next sprint*
@@ -455,24 +455,24 @@ In sprint 1 I accomplished critical planning and documentation tasks, and succes
 * [x] [USER STORY: Logout](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/4) (Must do)
 * [ ] [USER STORY: Update profile](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/5) (Should do)  *- Moved to next sprint*
 * [x] [USER STORY: Create a post/Memory](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/6) (Must do)
-* [x] [USER STORY: View a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/7) (Must do) *- Moved to next sprint*
-* [ ] [USER STORY: Update a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/8) (Should do) *- Moved to next sprint*
-* [ ] [USER STORY: Delete a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/9) (Should do) *- Moved to next sprint*
+* [x] [USER STORY: View a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/7) (Must do)
+* [x] [USER STORY: Update a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/8) (Must do)
+* [x] [USER STORY: Delete a post](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/9) (Must do)
 
-* [ ] [USER STORY: Search Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/11) (Should do) *- Moved to next sprint*
-* [ ] [USER STORY: Sort Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/12) (Could do) *- Moved to next sprint*
-* [ ] [USER STORY: Like Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/30) (Should do) *- Moved to next sprint*
+* [x] [USER STORY: Search Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/11) (Must do)
+* [x] [USER STORY: Sort Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/12) (Must do)
+* [x] [USER STORY: Like Posts](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/30) (Must do)
 
-* [ ] [USER STORY: Create a Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/14) (Could do) *- Moved to next sprint*
-* [ ] [USER STORY: View Comments](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/15) (Could do) *- Moved to next sprint*
-* [ ] [USER STORY: Update Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/16) (Could do) *- Moved to next sprint*
-* [ ] [USER STORY: Delete Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/17) (Could do) *- Moved to next sprint*
+* [x] [USER STORY: Create a Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/14) (Must do)
+* [x] [USER STORY: View Comments](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/15) (Must do)
+* [x] [USER STORY: Update Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/16) (Must do)
+* [x] [USER STORY: Delete Comment](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/17) (Must do)
 * [x] Plan Sprint 2 (Must do)
 
 **Sprint 2 recap:**
 During sprint 2 the focus was on the further development of the frontend, with significant progress made on the implementation of the navigation bar and authorization. Additionally, several crucial user stories pertaining to user registration, login, logout, and post creation and viewing were completed, while a few tasks and user stories have been transitioned to the next sprint.
 
-#### Sprint 3 (April 25th - Mai 1st, 2024): 
+#### Sprint 3 (April 25th - Juli 1st, 2024): 
 * [ ] [USER STORY: About page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/10) (Must do) *- Moved to next sprint*
 * [x] [USER STORY: Profile page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/19) (Must do)
 * [x] [USER STORY: Update profile](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/5) (Must do)
@@ -500,11 +500,11 @@ During sprint 2 the focus was on the further development of the frontend, with s
 * [ ] [USER STORY: Wander Map](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/26) (Could do) *- Moved to next sprint*
 * [ ] [USER STORY: Create a trip](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/27) (Wont do) *- Moved to next sprint*
 * [ ] [USER STORY: Countryside and info](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/33) (Wont do) *- Moved to next sprint*
-* [ ] [USER STORY: Location](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/25) (Must do) *- Moved to next sprint*
+* [ ] [USER STORY: Location](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/25) (Went do) *- Moved to next sprint*
 
 **Sprint 3 recap:** Although I have decided to move the "Location" user story to the next sprint, we have successfully accomplished a significant portion of the planned tasks for Sprint 3. 
 
-#### Sprint 4 (Mai 2nd - Mai 7th, 2024): 
+#### Sprint 4 (Mai 2nd - Juli 7th, 2024): 
 * [x] [USER STORY: About page](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/10) (Must do) 
 * [x] [USER STORY: Like comments](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/13) (Must do)
 * [ ] [USER STORY: Upload multiple photos](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/28) (Should do) *- Moved to backlog*
@@ -543,7 +543,7 @@ For a comprehensive view of the project progress, user stories, and bug tracking
 
 | **Bug** | **Status** |
 | ----------- | ----------- |
-| [Wrong message when hover countryside as not logged in](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/34) |Due to current priorities and time constraints, this bug have been moved to the backlog and will be addressed as time allows.|
+| [Wrong message when hover countryside as not logged in](https://github.com/Noah-Samawi/pp5-wander-wise-frontend/issues/34) |completed.|
 
 
 ### Fixed bugs 
