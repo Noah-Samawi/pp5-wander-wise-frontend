@@ -134,7 +134,7 @@ function WandererPage() {
     <>
       <hr />
       <p className="text-center">
-        {wanderer?.owner}'s memory lane <i class="fa-solid fa-paper-plane"></i>
+        {wanderer?.owner}'s memory lane <i className="fa-solid fa-paper-plane"></i>
       </p>
       {wandererPosts.results.length ? (
         <InfiniteScroll
